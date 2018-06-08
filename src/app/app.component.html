@@ -1,9 +1,9 @@
 <div style="text-align:center">
   <form [formGroup]="testForm" (ngSubmit)="onSubmitForm()">
 
-    <div class="form-group" [formGroup]="testForm.controls.availableDaysForm">
-      <mat-checkbox *ngFor="let day of days" [formControlName]="day">{{day}}</mat-checkbox>
-    </div>
+    <mat-selection-list formArrayName="availableDays" (selectionChange)="updateAvailableDaysArray($event)">
+        <mat-list-option *ngFor="let day of days; let i=index;" [formGroupName]="i" checkboxPosition="before">{{day}}</mat-list-option>
+    </mat-selection-list>
 
     <button type="submit" class="btn btn-primary">Soumettre</button>
   </form>
