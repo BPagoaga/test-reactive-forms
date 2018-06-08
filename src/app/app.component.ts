@@ -9,28 +9,21 @@ import { FormGroup, FormArray, FormBuilder, FormControl } from "@angular/forms";
 export class AppComponent {
   title = "app";
   testForm: FormGroup;
-  days: Array<String> = ["lundi", "mardi"];
+  days = ["lundi", "mardi"];
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
     this.initForm();
   }
 
   initForm() {
     this.testForm = this.fb.group({
-      availableDaysForm: this.fb.array([])
+      availableDaysForm: this.fb.group({
+        lundi: false,
+        mardi: false
+      })
     });
-
-    this.patch();
-  }
-
-  patch() {
-    const control = <FormArray>this.testForm.controls["availableDaysForm"];
-
-    this.days.forEach(x => control.push(this.fb.group({ x: false })));
   }
 
   onSubmitForm() {

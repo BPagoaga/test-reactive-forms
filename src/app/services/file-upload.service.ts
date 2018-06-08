@@ -6,6 +6,8 @@ import "rxjs/add/operator/catch";
 
 @Injectable()
 export class FileUploadService {
+  yourHeadersConfig: {};
+
   constructor(private httpClient: HttpClient) {}
 
   postFile(fileToUpload: File): Observable<boolean | {}> {
@@ -13,13 +15,13 @@ export class FileUploadService {
     const formData: FormData = new FormData();
     formData.append("fileKey", fileToUpload, fileToUpload.name);
     return this.httpClient
-      .post(endpoint, formData, { headers: yourHeadersConfig })
+      .post(endpoint, formData, { headers: this.yourHeadersConfig })
       .map(() => {
         return true;
       })
       .catch(e => this.handleError(e));
   }
-
+  xit;
   handleError(e): any {
     console.error(`Erreur lors de l'upload : ${e}`);
   }
