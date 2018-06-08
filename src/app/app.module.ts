@@ -3,7 +3,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   MatButtonModule,
   MatCheckboxModule,
-  MatListModule
+  MatListModule,
+  MatFormFieldModule,
+  MatInputModule
 } from "@angular/material";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -22,7 +24,9 @@ import { FileUploadService } from "./services/file-upload.service";
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [FileUploadService, HttpClient],
   bootstrap: [AppComponent]
